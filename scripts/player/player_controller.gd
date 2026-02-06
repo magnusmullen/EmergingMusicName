@@ -1,11 +1,14 @@
-extends Node
+extends CharacterBody2D
 
+@export var speed := 200.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta):
+	var direction = Vector2.ZERO
+	
+	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	
+	direction = direction.normalized()
+	velocity = direction * speed
+	
+	move_and_slide()
