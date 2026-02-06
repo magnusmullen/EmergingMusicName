@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c1qfj55g76ng0"]
+
+[node name="GameRoot" type="Node" unique_id=1307073216]
+
+[node name="World" type="Node2D" parent="." unique_id=386825471]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=975162317]
