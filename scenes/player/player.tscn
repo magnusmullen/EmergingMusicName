@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dsfdrwyj7jook" path="res://scripts/utilities/health_component.gd" id="3_gmlin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvxji"]
+size = Vector2(42.5, 72.75)
 
 [node name="Player" type="CharacterBody2D" unique_id=1538014919]
 script = ExtResource("1_dovo2")
@@ -15,6 +16,7 @@ script = ExtResource("1_dovo2")
 texture = ExtResource("2_gmlin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=790200441]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_lvxji")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1497831643]

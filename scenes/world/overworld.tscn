@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bjvxqnpn4riy3" path="res://assets/sprites/Overworld.png" id="1_het3u"]
 [ext_resource type="PackedScene" uid="uid://sjoctpm5iima" path="res://scenes/player/player.tscn" id="1_pwl2g"]
+[ext_resource type="PackedScene" uid="uid://vnxqt4kmwbq4" path="res://scenes/enemies/EnemyOverworld.tscn" id="3_373mm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_373mm"]
 texture = ExtResource("1_het3u")
@@ -1096,3 +1097,6 @@ layer_1/tile_data = PackedInt32Array(131075, 1769473, 3, 196605, 393217, 5, 1966
 position = Vector2(99, -61)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1915261573]
+
+[node name="EnemyOverworld" parent="." unique_id=1431688105 instance=ExtResource("3_373mm")]
+position = Vector2(137, 388)
