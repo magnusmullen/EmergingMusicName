@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvxji"]
 size = Vector2(42.5, 72.75)
 
-[node name="Player" type="CharacterBody2D" unique_id=1538014919]
+[node name="player" type="CharacterBody2D" unique_id=1538014919]
 script = ExtResource("1_dovo2")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=423732773]

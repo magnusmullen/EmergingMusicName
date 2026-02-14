@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dbuiap5kp503g"]
+
+[node name="BattleTest" type="Node2D" unique_id=138849231]
+
+[node name="Label" type="Label" parent="." unique_id=1610507916]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "BATTLE START!"

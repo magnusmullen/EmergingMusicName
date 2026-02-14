@@ -4,14 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://dacpyrls1rlyi" path="res://icon.svg" id="2_udd1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p827x"]
+size = Vector2(112, 113)
 
 [node name="EnemyOverworld" type="Area2D" unique_id=363729774]
+collision_layer = 3
 script = ExtResource("1_e3xfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=921229603]
-shape = SubResource("RectangleShape2D_p827x")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1374995517]
 texture = ExtResource("2_udd1u")
 
-[node name="DetectionArea" type="Area2D" parent="." unique_id=1769921909]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=921229603]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_p827x")
