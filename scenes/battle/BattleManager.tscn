@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://i4yl1uia305y"]
+
+[node name="BattleManager" type="Node2D" unique_id=47852024]
+
+[node name="PlayerBattle" type="Node2D" parent="." unique_id=649909204]
+
+[node name="EnemyBattle" type="Node2D" parent="." unique_id=601333368]
+
+[node name="BattleUI" type="CanvasLayer" parent="." unique_id=857150524]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=543389450]
