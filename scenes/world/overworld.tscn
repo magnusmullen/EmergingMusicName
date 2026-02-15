@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bjvxqnpn4riy3" path="res://assets/sprites/Overworld.png" id="1_het3u"]
 [ext_resource type="PackedScene" uid="uid://sjoctpm5iima" path="res://scenes/player/player.tscn" id="1_pwl2g"]
-[ext_resource type="Script" uid="uid://bxilab75waih1" path="res://scripts/enemies/hurt_box.gd" id="4_fxtkv"]
 [ext_resource type="Script" uid="uid://ck1csiip4fiw4" path="res://scripts/enemies/simple_enemy.gd" id="4_h0wcu"]
+[ext_resource type="Texture2D" uid="uid://dpoevci333lu1" path="res://assets/sprites/1ST FRAME.PNG" id="5_h0wcu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_373mm"]
 texture = ExtResource("1_het3u")
@@ -1089,7 +1089,7 @@ radius = 31.0
 height = 94.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_373mm"]
-size = Vector2(48, 48)
+size = Vector2(66, 98)
 
 [node name="Overworld" type="Node2D" unique_id=937697172]
 position = Vector2(1, -59)
@@ -1103,31 +1103,32 @@ layer_1/name = "Layer1"
 layer_1/tile_data = PackedInt32Array(131075, 1769473, 3, 196605, 393217, 5, 196612, 524289, 5, -131068, 589825, 5)
 
 [node name="Player" parent="." unique_id=1538014919 groups=["player"] instance=ExtResource("1_pwl2g")]
-position = Vector2(152, -23)
+position = Vector2(0, 1)
+wall_min_slide_angle = 0.04363323
+platform_floor_layers = 4294967040
+safe_margin = 0.001
+speed = 220.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1915261573]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Player" unique_id=841857284]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_373mm")
+debug_color = Color(0.7965512, 0.37781873, 0.51352686, 0.41960785)
 
 [node name="SimpleEnemy" type="CharacterBody2D" parent="." unique_id=1466000767]
-position = Vector2(-17, -27)
+position = Vector2(-66, -142)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("4_h0wcu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleEnemy" unique_id=914543197]
-position = Vector2(318, 164)
+position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_373mm")
 
-[node name="ColorRect" type="ColorRect" parent="SimpleEnemy" unique_id=423964795]
-offset_left = 298.0
-offset_top = 143.0
-offset_right = 338.0
-offset_bottom = 183.0
-color = Color(1, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="TagArea" type="Area2D" parent="SimpleEnemy" unique_id=1156373174]
-script = ExtResource("4_fxtkv")
+[node name="Sprite2D" type="Sprite2D" parent="SimpleEnemy" unique_id=1713492364]
+position = Vector2(0, 1)
+scale = Vector2(0.5480769, 0.6298077)
+texture = ExtResource("5_h0wcu")
