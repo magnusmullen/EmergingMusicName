@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bjvxqnpn4riy3" path="res://assets/sprites/Overworld.png" id="1_het3u"]
 [ext_resource type="PackedScene" uid="uid://sjoctpm5iima" path="res://scenes/player/player.tscn" id="1_pwl2g"]
-[ext_resource type="PackedScene" uid="uid://vnxqt4kmwbq4" path="res://scenes/enemies/EnemyOverworld.tscn" id="3_373mm"]
+[ext_resource type="Script" uid="uid://bxilab75waih1" path="res://scripts/enemies/hurt_box.gd" id="4_fxtkv"]
+[ext_resource type="Script" uid="uid://ck1csiip4fiw4" path="res://scripts/enemies/simple_enemy.gd" id="4_h0wcu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_373mm"]
 texture = ExtResource("1_het3u")
@@ -1083,20 +1084,50 @@ texture = ExtResource("1_het3u")
 [sub_resource type="TileSet" id="TileSet_fxtkv"]
 sources/1 = SubResource("TileSetAtlasSource_373mm")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_373mm"]
+radius = 31.0
+height = 94.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_373mm"]
+size = Vector2(48, 48)
+
 [node name="Overworld" type="Node2D" unique_id=937697172]
+position = Vector2(1, -59)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=814246989]
 scale = Vector2(8, 8)
 tile_set = SubResource("TileSet_fxtkv")
 format = 2
-layer_0/tile_data = PackedInt32Array(-131076, 1, 0, -65540, 1, 0, -4, 1, 0, 65532, 1, 0, 131068, 1, 0, 196604, 1, 0, -131075, 1, 0, -65539, 1, 0, -3, 1, 3, 65533, 1, 4, 131069, 1, 5, 196605, 1, 0, -131074, 1, 0, -65538, 1, 0, -2, 65537, 3, 65534, 65537, 4, 131070, 65537, 6, 196606, 1, 4, -131073, 1, 0, -65537, 1, 0, -1, 65537, 3, 65535, 65537, 4, 131071, 65537, 4, 196607, 65537, 4, -196608, 1, 0, -131072, 1, 0, -65536, 65537, 3, 0, 65537, 4, 65536, 1, 6, 131072, 131073, 4, -196607, 1, 0, -131071, 1, 0, -65535, 65537, 3, 1, 65537, 4, 65537, 65537, 5, 131073, 1, 0, -196606, 1, 0, -131070, 1, 0, -65534, 65537, 3, 2, 65537, 4, 65538, 65537, 5, 131074, 1, 0, -196605, 1, 0, -131069, 1, 0, -65533, 65537, 3, 3, 65537, 4, 65539, 65537, 5, 131075, 1, 0, -196604, 1, 0, -131068, 1, 0, -65532, 65537, 3, 4, 65537, 4, 65540, 65537, 5, 131076, 1, 0, 196609, 1, 0, 196608, 131073, 5, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 131077, 1, 0, 65541, 131073, 5, 5, 131073, 4, -65531, 131073, 3, -131067, 1, 0, -131066, 1, 0, -65530, 1, 0, 262140, 1, 0, 262141, 1, 0, 262142, 1, 5, 262143, 65537, 5, -196603, 1, 0, -196602, 1, 0, 6, 1, 0, 65542, 1, 0, 131078, 1, 0, 196614, 1, 0)
+layer_0/tile_data = PackedInt32Array(-131076, 196609, 7, -65540, 196609, 8, -4, 65537, 3, 65532, 65537, 4, 131068, 65537, 5, 196604, 1, 0, -131075, 262145, 7, -65539, 262145, 8, -3, 65537, 3, 65533, 65537, 4, 131069, 65537, 5, 196605, 1, 0, -131074, 1, 4, -65538, 1, 4, -2, 65537, 7, 65534, 65537, 4, 131070, 65537, 6, 196606, 1, 4, -131073, 65537, 4, -65537, 65537, 4, -1, 65537, 4, 65535, 65537, 4, 131071, 65537, 4, 196607, 65537, 4, -196608, 131073, 4, -131072, 131073, 4, -65536, 1, 7, 0, 65537, 4, 65536, 1, 6, 131072, 131073, 4, -196607, 1, 0, -131071, 1, 0, -65535, 65537, 3, 1, 65537, 4, 65537, 65537, 5, 131073, 1, 0, -196606, 1, 0, -131070, 1, 0, -65534, 65537, 3, 2, 65537, 4, 65538, 65537, 5, 131074, 1, 0, -196605, 1, 0, -131069, 1, 0, -65533, 65537, 3, 3, 65537, 4, 65539, 65537, 5, 131075, 1, 0, -196604, 1, 0, -131068, 1, 0, -65532, 65537, 3, 4, 65537, 4, 65540, 65537, 5, 131076, 1, 0, 196609, 1, 0, 196608, 131073, 5, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 131077, 1, 0, 65541, 65537, 5, 5, 65537, 4, -65531, 65537, 3, -131067, 1, 0, -131066, 1, 0, -65530, 65537, 3, 262140, 1, 0, 262141, 1, 0, 262142, 1, 5, 262143, 65537, 5, -196603, 1, 0, -196602, 1, 0, 6, 65537, 4, 65542, 65537, 5, 131078, 1, 0, 196614, 1, 0, -196613, 131073, 6, -131077, 131073, 7, -65541, 131073, 8, -196612, 196609, 6, -196611, 262145, 6, -196610, 1, 4, -262144, 131073, 4, -196609, 65537, 4, -262145, 65537, 3, -262146, 1, 3, -327680, 131073, 3, 65531, 1, 4, 131067, 1, 5, -5, 1, 3)
 layer_1/name = "Layer1"
 layer_1/tile_data = PackedInt32Array(131075, 1769473, 3, 196605, 393217, 5, 196612, 524289, 5, -131068, 589825, 5)
 
-[node name="Player" parent="." unique_id=1538014919 instance=ExtResource("1_pwl2g")]
-position = Vector2(99, -61)
+[node name="Player" parent="." unique_id=1538014919 groups=["player"] instance=ExtResource("1_pwl2g")]
+position = Vector2(152, -23)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1915261573]
 
-[node name="EnemyOverworld" parent="." unique_id=1431688105 instance=ExtResource("3_373mm")]
-position = Vector2(137, 388)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player" unique_id=841857284]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_373mm")
+
+[node name="SimpleEnemy" type="CharacterBody2D" parent="." unique_id=1466000767]
+position = Vector2(-17, -27)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_h0wcu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleEnemy" unique_id=914543197]
+position = Vector2(318, 164)
+shape = SubResource("RectangleShape2D_373mm")
+
+[node name="ColorRect" type="ColorRect" parent="SimpleEnemy" unique_id=423964795]
+offset_left = 298.0
+offset_top = 143.0
+offset_right = 338.0
+offset_bottom = 183.0
+color = Color(1, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TagArea" type="Area2D" parent="SimpleEnemy" unique_id=1156373174]
+script = ExtResource("4_fxtkv")
