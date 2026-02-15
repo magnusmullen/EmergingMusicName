@@ -4,20 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://0lj2xi4yc1ec" path="res://assets/sprites/mc.png" id="2_gmlin"]
 [ext_resource type="Script" uid="uid://dsfdrwyj7jook" path="res://scripts/utilities/health_component.gd" id="3_gmlin"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvxji"]
-size = Vector2(42.5, 72.75)
-
 [node name="player" type="CharacterBody2D" unique_id=1538014919]
+position = Vector2(314, 195)
+motion_mode = 1
 script = ExtResource("1_dovo2")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=423732773]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1174717720]
 texture = ExtResource("2_gmlin")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=790200441]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_lvxji")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1497831643]
 script = ExtResource("3_gmlin")

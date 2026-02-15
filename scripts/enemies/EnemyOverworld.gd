@@ -1,11 +1,23 @@
-extends Area2D
+extends CharacterBody2D
+
+@export var speed := 100
+@export var max_health := 3
+
+var health : int
+var player : Node2D = null
 
 func _ready():
-	print("[EnemyOverworld] Ready. Monitoring=", monitoring, " Mask=", collision_mask)
-	body_entered.connect(_on_body_entered)
+	health = max_health
+	player = get_tree().get_first_node_in_group("player")
 
-func _on_body_entered(body):
-	print("[EnemyOverworld] body_entered by: ", body.name)
-	if body.name == "Player": # <- match your actual node name (capitalize if yours is 'Player')
-		print("[EnemyOverworld] Player detected. Changing scene...")
-		get_tree().change_scene_to_file("res://scenes/battle/BattleTest.tscn")
+func _physics_process(delta):
+	if player:
+		var direction = (player.global_position - global_position).normalized()
+		velocity = direction * speed
+		move_and_slide()
+
+func take_damage(amount):
+	health -= amount
+
+	if health <= 0:
+		queue_free()
